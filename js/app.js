@@ -20,26 +20,25 @@ function ejercicio2(){
     //Añade en última posición la ciudad de París.
     paises.push("París");
     //Mostrar la longitud del arreglo.
-    document.write(`El arreglo de ciudades tiene ${paises.length} elementos`);
+    document.getElementById("ejercicio2paragraph").innerHTML = (`El arreglo de ciudades tiene ${paises.length} elementos`);
     //Mostrar en el documento web los ítems de las posiciones primera, tercera y última.
     if(paises.length > 0){
-        document.write(`<p>Elemento 1ra posición: ${paises[0]}</p>`);
+        document.getElementById("ejercicio2paragraph").innerHTML += (`<p>Elemento 1ra posición: ${paises[0]}</p>`);
         if(paises.length > 2){
-            document.write(`<p>Elemento 3ra posición: ${paises[2]}</p>`);
-            console.log(paises.length);
-            document.write(`<p>Elemento última posición: ${paises[paises.length - 1]}</p>`);
+            document.getElementById("ejercicio2paragraph").innerHTML += (`<p>Elemento 3ra posición: ${paises[2]}</p>`);
+            document.getElementById("ejercicio2paragraph").innerHTML += (`<p>Elemento última posición: ${paises[paises.length - 1]}</p>`);
         }
     }else{
-        document.write(`no hay paises que mostrar`);
+        document.getElementById("ejercicio2paragraph").innerHTML += (`no hay paises que mostrar`);
     }
     //Escribe por pantalla el elemento que ocupa la segunda posición.
 
     //Sustituye el elemento que ocupa la segunda posición por la ciudad de 'Barcelona'.
-    document.write(`<h2>Arreglo de ciudades</h2><ul>`);
+    document.getElementById("ejercicio2paragraph").innerHTML += (`<h2>Arreglo de ciudades</h2><ul>`);
     paises.forEach(pais => {
-        document.write(`<li>${pais}</li>`);
+        document.getElementById("ejercicio2paragraph").innerHTML += (`<li>${pais}</li>`);
     });
-    document.write(`</ul>`)
+    document.getElementById("ejercicio2paragraph").innerHTML += (`</ul>`)
 }
 
 function ejercicio3(){
@@ -66,16 +65,6 @@ function ejercicio3(){
     }
     
     function graficarResultados(arr){
-        /* document.write(`<table class="table table-striped-columns">
-	    <tbody>`);
-        for (let i = 2; i <= 12; i++) {
-            document.write(`<tr>`);//dibuja fila
-            document.write(`<td>${i}</td>`);
-            document.write(`<td>${contarOcurrencias(arr, i)}</td>`);
-            document.write(`</tr>`);
-        }
-        document.write(`</tbody>
-        </table>`); */
         let html_partial = (`<table class="table table-striped-columns">
             <thead>
                 <tr>

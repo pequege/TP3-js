@@ -14,11 +14,6 @@
     <main>
         <div class="container">
             <h1>TP3 js</h1>
-            <button onclick="ejercicio1()"> Test 1</button>
-            <button onclick="ejercicio2()"> Test 2</button>
-            <button class="btn btn-danger" onclick="ejercicio3()"> Dados</button>
-            <div id="ejercicio3paragraph">
-            </div>
             <button onclick="ejercicio4()"> Test 4</button>
             <button onclick="ejercicio5()"> Test 5</button>
             <button onclick="ejercicio6()"> Test 6</button>
@@ -121,10 +116,59 @@
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
                         data-bs-parent="#accordionEjerciciosArray">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
-                            <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting
-                            happening here in terms of content, but just filling up the space to make it look, at least at first
-                            glance, a bit more representative of how this would look in a real-world application.</div>
+                        <div class="accordion-body">
+                            <p>Escribir un script que simule el lanzamiento de dos dados. Hacer uso de la función Math.random para obtener números aleatorios entre 1 y 6 para cada uno de los lanzamientos de los dados. Sumar el resultado de lanzar dos dados y anotar en un array el número de apariciones de dicha suma, repitiendo 50 veces esta operación.</p>
+                            <pre>
+                                <code>
+                                    let resultados =[];
+                                    function lanzarDados(){
+                                        let dado1 = Math.floor(Math.random() * 6) + 1;
+                                        let dado2 = Math.floor(Math.random() * 6) + 1;
+                                        return dado1 + dado2;
+                                    }
+                                    
+                                    function lanzarDadosNVeces(n){
+                                        for(let i = 0; i < n; i++){
+                                            resultados.push(lanzarDados());
+                                        }
+                                    }
+
+                                    function contarOcurrencias(arr,n){
+                                        let ocurrencias = 0;
+                                        arr.forEach(element => {
+                                            if(element === n){ocurrencias++};
+                                        });
+                                        return ocurrencias;
+                                    }
+                                    
+                                    function graficarResultados(arr){
+                                        let html_partial = (`<table class="table table-striped-columns">
+                                            <thead>
+                                                <tr>
+                                                    <td>Suma🎲🎲</td>
+                                                    <td>Apariciones</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>`);
+                                        for (let i = 2; i <= 12; i++) {
+                                            html_partial += (`<tr>`);
+                                            html_partial += (`<td>${i}</td>`);
+                                            html_partial += (`<td>${contarOcurrencias(arr, i)}</td>`);
+                                            html_partial += (`</tr>`);
+                                            }
+                                        html_partial += (`</tbody>
+                                            </table>`);
+                                        document.getElementById("ejercicio3paragraph").innerHTML = html_partial;
+                                    }
+                                    
+                                    lanzarDadosNVeces(500);
+                                    graficarResultados(resultados);
+                                    console.log(resultados);
+                                </code>
+                            </pre>
+                            <button class="btn btn-danger" onclick="ejercicio3()">Test</button>
+                            <div id="ejercicio3paragraph" ></div>
+                        </div>
                     </div>
                 </div>
             </div>
